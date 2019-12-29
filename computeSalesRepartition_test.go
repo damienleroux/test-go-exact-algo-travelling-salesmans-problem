@@ -54,7 +54,7 @@ func areSaleSetsInSets(SalesSetToFind [][]int, SalesSets [][][]int) bool {
 
 func testGetPossibleSaleIndexesSets(t *testing.T, salesNumber int, expectedSets [][][]int) {
 	resultSaleIndexesSets := GetPossibleSaleIndexesSets(salesNumber, 100)
-	t.Log(resultSaleIndexesSets)
+	//t.Log(resultSaleIndexesSets)
 	//test number of solutions found
 	expectedNumberOfSet := len(expectedSets)
 	assert.Equal(t, len(resultSaleIndexesSets), expectedNumberOfSet, fmt.Sprintf("%d should have been found for %d sales", expectedNumberOfSet, salesNumber))

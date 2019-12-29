@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/damienleroux/test-go-exact-algo-travelling-salesman-problem/computeTour"
 	"math"
 )
 
@@ -18,7 +19,7 @@ func createPossibleSalesSets(
 	salesNumber int,
 	safeGuard chan int,
 	maxGoroutines int,
-	onEnd CallbackEnd,
+	onEnd computeTour.CallbackEnd,
 ) {
 	for index := indexBase; index < salesNumber; index++ {
 		var otherCombinationBeforeIndex []int

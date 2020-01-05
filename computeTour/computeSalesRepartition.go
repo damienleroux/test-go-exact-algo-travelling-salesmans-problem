@@ -1,8 +1,9 @@
 package computeTour
 
 import (
-	algo "github.com/damienleroux/test-go-exact-algo-travelling-salesman-problem/computeTour"
 	"math"
+
+	algo "github.com/damienleroux/test-go-exact-algo-travelling-salesman-problem/computeTour"
 )
 
 func createPossibleSalesSets(
@@ -15,7 +16,6 @@ func createPossibleSalesSets(
 	onEnd algo.CallbackEnd,
 ) {
 	for index := indexBase; index < salesNumber; index++ {
-
 		otherCombinationBeforeIndex := NewIntSetFromIntSet(combinaisonsBases.GetSet(1))
 		otherCombinationBeforeIndex.AppendRangeInt(indexBase, index-1)
 
@@ -54,7 +54,10 @@ func GetPossibleSaleIndexesSets(salesNumber, maxGoroutines int) []IntSets {
 	setsChan := make(chan IntSets)
 
 	// Create sets
-	go createPossibleSalesSets(setsChan, 0, IntSets{}, salesNumber, safeGuard, maxGoroutines, nil)
+	initialCombinaison := newIntSets()
+	initialCombinaison.AppendIntSet(IntSet{})
+	initialCombinaison.AppendIntSet(IntSet{})
+	go createPossibleSalesSets(setsChan, 0, initialCombinaison, salesNumber, safeGuard, maxGoroutines, nil)
 
 	// Find best route
 	numberOfSolutions := int(math.Pow(2, float64(salesNumber)) - 1)

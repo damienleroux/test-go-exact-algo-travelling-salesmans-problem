@@ -9,27 +9,27 @@ type IntSet struct {
 	elements []int
 }
 
-func (current IntSet) Get() []int {
+func (current *IntSet) Get() []int {
 	return current.elements
 }
-func (current IntSet) Len() int {
+func (current *IntSet) Len() int {
 	return len(current.elements)
 }
 
-func (current IntSet) AppendInts(elements []int) {
+func (current *IntSet) AppendInts(elements []int) {
 	current.elements = append(current.elements, elements...)
 }
 
-func (current IntSet) AppendIntSet(other IntSet) {
+func (current *IntSet) AppendIntSet(other IntSet) {
 	current.elements = append(current.elements, other.Get()...)
 }
 
-func (current IntSet) AppendInt(element int) {
+func (current *IntSet) AppendInt(element int) {
 	current.elements = append(current.elements, element)
 }
 
 // Add every integer between beg and end, including beg and end
-func (current IntSet) AppendRangeInt(beg int, end int) {
+func (current *IntSet) AppendRangeInt(beg int, end int) {
 	for i := beg; i <= end; i++ {
 		current.AppendInt(i)
 	}
